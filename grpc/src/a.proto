@@ -1,0 +1,21 @@
+syntax = "proto3";
+message Product {
+  string name = 1;
+  string description = 2;
+  int32 price = 3;
+  int32 stock = 4;
+}
+message EmptyRequest {}
+message ProductList {
+  repeated Product products = 1;
+}
+service ProductService {
+   rpc AddProduct(Product) returns (Product);
+   rpc GetProduct(EmptyRequest) returns (ProductList);
+   rpc GetProductByName(ProductName) returns (Product);
+}
+
+message ProductName{
+    string name = 1;
+}
+
